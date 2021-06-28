@@ -1,0 +1,7 @@
+version: '3'
+services:
+  web1:
+    image: nginx:latest
+    ports:
+        - '80:80'
+    
