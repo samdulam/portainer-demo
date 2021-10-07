@@ -24,9 +24,5 @@ services:
       MYSQL_PASSWORD: examplePW
     volumes:
       - mysql-data:/var/lib/mysql
-networks:
-  default:
-    name: ${NET_NAME}
-    driver: bridge
 volumes:
   mysql-data:
