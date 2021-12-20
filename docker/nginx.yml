@@ -1,7 +1,7 @@
 version: '3'
 services:
   web1:
-    image: nginx:latest
+    image: nginx:latest123
     ports:
       - '85:80'
 #      - '443:443'
