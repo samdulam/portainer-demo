@@ -5,6 +5,5 @@ services:
     ports:
       - '85:80'
       - '445:443'
-    volumes:
-      - ./data:/vol1
+
     
