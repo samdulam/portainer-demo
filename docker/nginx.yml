@@ -6,5 +6,5 @@ services:
       - '85:80'
       - '445:443'
     volumes:
-      - ./data:/vol1
+      - docker/data:/vol1
     
