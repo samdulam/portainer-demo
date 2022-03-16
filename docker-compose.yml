@@ -1,6 +1,8 @@
 version: '3.8'
 services:
   test: 
-    image: ${IMG}
+    image: nginx:latest
     env_file:
-      - .env
+      - test.env
+    environment:
+      VAR1: ${IMG}
