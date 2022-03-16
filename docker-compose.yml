@@ -3,6 +3,6 @@ services:
   test: 
     image: nginx:latest
     env_file:
-      - test.env
+      - .env
     environment:
       VAR1: ${IMG}
