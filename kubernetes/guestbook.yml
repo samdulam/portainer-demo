@@ -130,6 +130,8 @@ spec:
         env:
         - name: GET_HOSTS_FROM
           value: "dns"
+        - name: TEST_ENV_VAR
+          value: "Original"
         resources:
           requests:
             cpu: 100m
