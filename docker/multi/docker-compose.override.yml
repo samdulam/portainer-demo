@@ -1,3 +1,5 @@
-web1:
-  ports:
-  - 8883:80
+version: '3'
+services:
+  web1:
+    ports:
+    - 8883:80
