@@ -1,0 +1,24 @@
+{
+    "name": "discord-bot",
+    "version": "1.0.0",
+    "description": "simple discord bot for the noobs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HeresJohnny320/discord-bot.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/HeresJohnny320/discord-bot/issues"
+    },
+    "homepage": "https://github.com/HeresJohnny320/discord-bot#readme",
+    "dependencies": {
+        "discord.js": "^12.5.1",
+        "nodemon": "^2.0.7"
+    }
+}
