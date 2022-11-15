@@ -3,7 +3,7 @@ version: '3'
 services:
   nodejsapp:
     build: .
-    # container-name: discord_bot
+    container_name: discord_bot
     restart: unless-stopped
     volumes:
       - /home/servers/bot:/discord_bot
