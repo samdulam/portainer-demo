@@ -1,8 +1,8 @@
 version: '3'
 services:
   web1:
-    image: nginx:latest
+    image: ghcr.io/samdulam/nginx:latest
   web2:
-    image: caddy:latest
+    image: ghcr.io/samdulam/caddy:latest
 
     
