@@ -1,9 +1,8 @@
 version: '3'
 services:
   web1:
-    image: nginx:1.21
-#     ports:
-#       - '85:80'
-#       - '446:443'
+    image: nginx:latest
+  web2:
+    image: caddy:latest
 
     
