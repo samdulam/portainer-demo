@@ -1,8 +1,7 @@
 version: '3'
 services:
   web1:
-    image: portainertest/nginx:imgtest
-  web2:
-    image: ghcr.io/samdulam/caddy:latest
+    image: nginx:imgtest
+
 
     
