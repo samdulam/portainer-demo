@@ -1,10 +1,8 @@
 version: '3'
 services:
   web1:
-    image: portainertest/nginx:imgtest
+    image: nginx:latest
     environment:
       - FOO=${FOO}
-  web2:
-    image: ghcr.io/samdulam/caddy:latest
 
     
