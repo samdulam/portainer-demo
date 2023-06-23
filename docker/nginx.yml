@@ -2,7 +2,6 @@ version: '3'
 services:
   web1:
     image: nginx:latest
-    environment:
-      - FOO=${FOO}
+
 
     
