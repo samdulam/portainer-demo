@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  mariadb:
+    image: bitnami/mariadb:latest
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - mariadb-pvs:/bitnami/mariadb
+
+  wordpress:
+    depends_on:
+      - mariadb
+    image: bitnami/wordpress-nginx:6
+    restart: always
+    ports:
+      - "18443:8443"
+    env_file:
+      - .env
+    volumes:
+      - ./install-plugins.sh:/post-init.d/install-plugins.sh
+      - ./install-plugins.sh:/docker-entrypoint-init.d/install-plugins.sh
+volumes:
+  mariadb-pvs:
