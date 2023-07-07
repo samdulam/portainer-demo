@@ -1,8 +1,8 @@
-version: "3.1"
+version: "3.9"
 
 services:
   mariadb:
-    image: bitnami/mariadb:latest
+    image: nginx:latest
     restart: always
     volumes:
       - mariadb-pvs:/bitnami/mariadb
@@ -10,7 +10,7 @@ services:
   wordpress:
     depends_on:
       - mariadb
-    image: bitnami/wordpress-nginx:6
+    image: nginx:latest
     restart: always
     ports:
       - "18443:8443"
