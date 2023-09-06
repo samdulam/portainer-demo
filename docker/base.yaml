@@ -2,5 +2,5 @@ version: '3.2'
 services:
   web:
     extends:
-      file: common-services.yml
+      file: common-services.yaml
       service: webapp
