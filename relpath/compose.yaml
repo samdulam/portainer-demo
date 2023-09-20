@@ -4,8 +4,8 @@ services:
   mariadb:
     image: bitnami/mariadb:latest
     restart: always
-    env_file:
-      - ../foo.env
+    # env_file:
+    #   - ../foo.env
     volumes:
       - mariadb-pvs:/bitnami/mariadb
 
