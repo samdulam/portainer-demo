@@ -10,7 +10,7 @@ services:
       WORDPRESS_DB_USER: example
       WORDPRESS_DB_PASSWORD: examplePW
     volumes:
-      - ./wordpress-data:/var/www/html
+      - wordpress-data:/var/www/html
   mysql:
     image: mysql:5.6
     environment:
@@ -22,3 +22,4 @@ services:
       - mysql-data:/var/lib/mysql
 volumes:
   mysql-data:
+  wordpress-data:
