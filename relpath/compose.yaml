@@ -5,7 +5,7 @@ services:
     image: bitnami/mariadb:latest
     restart: always
     env_file:
-      - ../foo.env
+      - stack.env
     volumes:
       - mariadb-pvs:/bitnami/mariadb
 
@@ -17,9 +17,9 @@ services:
     ports:
       - "18443:8443"
     env_file:
-      - ../foo.env
-    volumes:
-      - ./install-plugins.sh:/post-init.d/install-plugins.sh
-      - ./install-plugins.sh:/docker-entrypoint-init.d/install-plugins.sh
+      - stack.env
+    # volumes:
+    #   - ./install-plugins.sh:/post-init.d/install-plugins.sh
+    #   - ./install-plugins.sh:/docker-entrypoint-init.d/install-plugins.sh
 volumes:
   mariadb-pvs:
