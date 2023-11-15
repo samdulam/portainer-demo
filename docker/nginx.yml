@@ -4,6 +4,8 @@ services:
     image: nginx:latest
     environment:
       - foo=bar
+    ports:
+      - 80:80
 
 
     
