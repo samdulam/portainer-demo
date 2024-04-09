@@ -4,8 +4,6 @@ services:
   mariadb:
     image: nginx:latest
     restart: always
-    env_file:
-      - stack.env
     volumes:
       - mariadb-pvs:/bitnami/mariadb
 
