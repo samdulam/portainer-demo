@@ -16,8 +16,8 @@ services:
     restart: always
     ports:
       - "18443:8443"
-    # volumes:
-    #   - ./install-plugins.sh:/post-init.d/install-plugins.sh
-    #   - ./install-plugins.sh:/docker-entrypoint-init.d/install-plugins.sh
+    volumes:
+      - ./install-plugins.sh:/post-init.d/install-plugins.sh
+      - ./install-plugins.sh:/docker-entrypoint-init.d/install-plugins.sh
 volumes:
   mariadb-pvs:
