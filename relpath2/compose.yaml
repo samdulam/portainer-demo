@@ -4,7 +4,6 @@ services:
   mariadb:
     image: nginx:latest
     environment:
-      SERVER: ${SERVER}
     volumes:
       - mariadb-pvs:/bitnami/mariadb
 
