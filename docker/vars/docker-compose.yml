@@ -5,5 +5,5 @@ services:
     env_file:
       - stack.env
     environment:
-      - v1 = ${UI_v1}
-      - new = ${UI_NEW}
+      - v1=${UI_v1}
+      - new=${UI_NEW}
