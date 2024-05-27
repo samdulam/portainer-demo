@@ -1,0 +1,8 @@
+services:
+  web1:
+    image: nginx:latest
+    env_file:
+      - stack.env
+    volumes:
+      - ./${PROJECT_NAME:-SMAREG3}:/vol
+
