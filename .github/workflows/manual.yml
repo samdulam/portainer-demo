@@ -15,7 +15,7 @@ on:
         required: false
         type: string
 env:
-  SECRET1: ${{ secrets.SECRET1 }}
+  TESTME1: ${{ secrets.SECRET1 }}
   VAR1: ${{ vars.VAR1 }}
   CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
 jobs:
@@ -26,7 +26,7 @@ jobs:
         run: |
           pwd
           env
-          echo "Secret: "$SECRET1
+          echo "MyAwesome: "$TESTME1
           echo "Var: "$VAR1
           echo "ClusterName: ${{ inputs.CLUSTER_NAME }}"
           
