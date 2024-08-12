@@ -17,7 +17,7 @@ on:
 env:
   SECRET1: ${{ secrets.SECRET1 }}
   VAR1: ${{ vars.VAR1 }}
-  ClusterName: ${{ inputs.CLusterName }}
+  ClusterName: ${{ inputs.ClusterName }}
 jobs:
   test:
     runs-on: sdulam
