@@ -1,0 +1,26 @@
+name: "Cluster Deploy"
+on:
+  workflow_call:
+    inputs:
+      ClusterName:
+        description: 'Enter a Name for Cluster:'
+        type: string
+        required: true
+      Dataaacenter:
+        description: 'Detaaaaceenter to deploy the cluster in:'
+        type: string
+        required: true
+      Num of Control Plane Nodes:
+        description: "Controlllllllll pppppppppppplane nodes needed:"
+        required: false
+        type: string
+        
+jobs:
+  test:
+    runs-on: pltfrms-gh-run1
+    steps:
+      - name: "First Step"
+        shell: bash
+        run: |
+          pwd
+          env
