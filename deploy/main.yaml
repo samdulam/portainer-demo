@@ -15,6 +15,6 @@
     - name: Deploy Cluster
       kubernetes.core.k8s:
         state: present
-        src: "deploy/{{ CLUSTER_NAME }}.yaml"
+        src: "{{ CLUSTER_NAME }}.yaml"
         # kubeconfig: capi_mgmt_kubeconfig.yaml
         # context: kind
