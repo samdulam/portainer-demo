@@ -10,4 +10,4 @@
   tasks:
     - name: Generate NGINX configuration file using envsubst
       shell: |
-        clusterctl generate cluster {{ CLUSTER_NAME }}  --from files/k8s1.30.2-vsphere-kadm.yaml    --kubernetes-version {{ KUBERNETES_VERSION }}     --control-plane-machine-count {{ CONTROL_PLANE_MACHINE_COUNT }}     --worker-machine-count {{ WORKER_MACHINE_COUNT }} > /home/ansible/cluster-template/obs-mgmt-ans.yaml
+        clusterctl generate cluster {{ CLUSTER_NAME }}  --from files/k8s1.30.2-vsphere-kadm.yaml    --kubernetes-version {{ KUBERNETES_VERSION }}     --control-plane-machine-count {{ CONTROL_PLANE_MACHINE_COUNT }}     --worker-machine-count {{ WORKER_MACHINE_COUNT }} > obs-mgmt-ans.yaml
