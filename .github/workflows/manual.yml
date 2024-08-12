@@ -87,11 +87,20 @@ env:
   
 
 jobs:
-  test:
+  prepare:
     runs-on: sdulam
     steps:
-      - name: "First Step"
+      - name: "Setup Variables"
         run: |
-          pwd
-          env >> env.txt
-          
+          export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
+          export CTRL_MEM=$(($CTRL_MEM * 1024))
+          export WKR_MEM=$(($WKR_MEM * 1024))
+          env > env.txt
+
+  generate:
+    runs-on: sdulam
+    steps:
+      - name: "Generate Cluster Yaml from Template"
+        run: |
+          ansible deploy/roles/generate/main.yaml
+          cat /home/ansible/cluster-template/obs-mgmt-ans.yaml
