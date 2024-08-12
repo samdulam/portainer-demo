@@ -1,0 +1,23 @@
+---
+- name: Cluster Deploy using Cluster API
+  hosts: localhost
+  gather_facts: no
+  vars:
+    CLUSTER_NAME: "{{ lookup('ansible.builtin.env', 'CLUSTER_NAME') }}"
+    CONTROL_PLANE_MACHINE_COUNT: "{{ lookup('ansible.builtin.env', 'CONTROL_PLANE_MACHINE_COUNT') }}"
+    WORKER_MACHINE_COUNT: "{{ lookup('ansible.builtin.env', 'WORKER_MACHINE_COUNT') }}"
+    KUBERNETES_VERSION: "{{ lookup('ansible.builtin.env', 'KUBERNETES_VERSION') }}"
+  tasks:
+    - name: Generate Cluster Yaml from Template
+      shell: |
+        clusterctl generate cluster {{ CLUSTER_NAME }}  --from files/k8s1.30.2-vsphere-kadm.yaml    --kubernetes-version {{ KUBERNETES_VERSION }}     --control-plane-machine-count {{ CONTROL_PLANE_MACHINE_COUNT }}     --worker-machine-count {{ WORKER_MACHINE_COUNT }} > {{ CLUSTER_NAME }}.yaml
+    
+    - name: Deploy Cluster
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ CLUSTER_NAME }}.yaml"
+        kubeconfig: capi-mgmt-kubeconfig.yaml
+        context: kind
+        
+        
+        
