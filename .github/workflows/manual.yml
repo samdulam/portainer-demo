@@ -102,5 +102,5 @@ jobs:
     steps:
       - name: "Generate Cluster Yaml from Template"
         run: |
-          ansible deploy/roles/generate/main.yaml
+          ansible-playbook deploy/roles/generate/main.yaml
           cat /home/ansible/cluster-template/obs-mgmt-ans.yaml
