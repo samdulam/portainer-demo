@@ -7,11 +7,11 @@ on:
         type: string
         required: true
       Dataaacenter:
-        description: 'Detaaaaceenter to deploy the cluster in:'
+        description: 'DataCenter to deploy the cluster in:'
         type: string
         required: true
       Num of Control Plane Nodes:
-        description: "Controlllllllll pppppppppppplane nodes needed:"
+        description: "Control plane nodes needed:"
         required: false
         type: string
         
