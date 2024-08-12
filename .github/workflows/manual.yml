@@ -87,21 +87,19 @@ env:
   
 
 jobs:
-  prepare:
+  Cluster_Deploy:
     runs-on: sdulam
     steps:
       - name: 'Checkout the Current Branch'
         uses: actions/checkout@v4.1.1
+
       - name: "Setup Variables"
         run: |
           export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
           export CTRL_MEM=$(($CTRL_MEM * 1024))
           export WKR_MEM=$(($WKR_MEM * 1024))
-          env > env.txt
+          pwd
 
-  generate:
-    runs-on: sdulam
-    steps:
       - name: "Generate Cluster Yaml from Template"
         run: |
           ansible-playbook deploy/roles/generate/main.yaml
