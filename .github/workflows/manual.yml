@@ -2,7 +2,7 @@ name: "Cluster Deploy"
 on:
   workflow_dispatch:
     inputs:
-      CLUSTER_NAMR:
+      CLUSTER_NAME:
         description: 'Enter a Name for Cluster:'
         type: string
         required: true
