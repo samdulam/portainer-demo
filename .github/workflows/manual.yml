@@ -15,7 +15,7 @@ on:
         required: false
         type: string
 env:
-  SECERET1: ${{ secrets.SECRET1 }}
+  SECRET1: ${{ secrets.SECRET1 }}
   VAR1: ${{ vars.VAR1 }}
   ClusterName: ${{ inputs.CLusterName }}
 jobs:
@@ -29,5 +29,5 @@ jobs:
           env
           echo "Secret: "$SECRET1
           echo "Var: "$VAR1
-          echo "ClusterName: "$ClusterName
+          echo "ClusterName: $ClusterName"
           
