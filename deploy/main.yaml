@@ -18,6 +18,3 @@
         src: "{{ CLUSTER_NAME }}.yaml"
         kubeconfig: capi-mgmt-kubeconfig.yaml
         context: kind
-        
-        
-        
