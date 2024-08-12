@@ -1,6 +1,6 @@
 name: "Cluster Deploy"
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       ClusterName:
         description: 'Enter a Name for Cluster:'
