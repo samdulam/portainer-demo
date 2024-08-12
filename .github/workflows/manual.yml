@@ -14,7 +14,10 @@ on:
         description: "Control plane nodes needed:"
         required: false
         type: string
-        
+env:
+  SECERET1: ${{ secrets.SECRET1 }}
+  VAR1: ${{ vars.VAR1 }}
+  ClusterName: ${{ inputs.CLusterName }}
 jobs:
   test:
     runs-on: sdulam
@@ -24,3 +27,7 @@ jobs:
         run: |
           pwd
           env
+          echo "Secret: "$SECRET1
+          echo "Var: "$VAR1
+          echo "ClusterName: "$ClusterName
+          
