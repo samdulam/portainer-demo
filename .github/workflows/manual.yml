@@ -66,9 +66,9 @@ env:
   WORKER_MACHINE_COUNT: ${{ inputs.WORKER_MACHINE_COUNT }}
   KUBERNETES_VERSION: ${{ inputs.KUBERNETES_VERSION }}
   CTRL_CPU: ${{ inputs.CTRL_CPU }}
-  CTRL_MEM: ${{ inputs.CTRL_MEM * 1024 }}
+  CTRL_MEM: $({{ inputs.CTRL_MEM }} * 1024)
   WKR_CPU: ${{ inputs.WKR_CPU }}
-  WKR_MEM: ${{ inputs.WKR_MEM * 1024 }}
+  WKR_MEM: $({{ inputs.WKR_MEM }} * 1024)
   # Vars from Actions Vars and Secrets
   VSPHERE_SERVER: ${{ secrets.VSPHERE_SERVER }}
   VSPHERE_USER: ${{ secrets.VSPHERE_USER }}
