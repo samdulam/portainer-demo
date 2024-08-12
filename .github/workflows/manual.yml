@@ -2,7 +2,7 @@ name: "Cluster Deploy"
 on:
   workflow_dispatch:
     inputs:
-      Name:
+      CLUSTER_NAMR:
         description: 'Enter a Name for Cluster:'
         type: string
         required: true
@@ -17,7 +17,7 @@ on:
 env:
   SECRET1: ${{ secrets.SECRET1 }}
   VAR1: ${{ vars.VAR1 }}
-  ClusterName: ${{ inputs.Name }}
+  CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
 jobs:
   test:
     runs-on: sdulam
@@ -28,5 +28,5 @@ jobs:
           env
           echo "Secret: "$SECRET1
           echo "Var: "$VAR1
-          echo "ClusterName: ${{ inputs.Name }}"
+          echo "ClusterName: $CLUSTER_NAME"
           
