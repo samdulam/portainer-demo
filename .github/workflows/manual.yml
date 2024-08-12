@@ -17,7 +17,7 @@ on:
         
 jobs:
   test:
-    runs-on: pltfrms-gh-run1
+    runs-on: sdulam
     steps:
       - name: "First Step"
         shell: bash
