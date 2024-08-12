@@ -100,7 +100,7 @@ jobs:
           export CTRL_MEM=$(($CTRL_MEM * 1024))
           export WKR_MEM=$(($WKR_MEM * 1024))
           echo $KUBE_CONFIG > capi_mgmt_kubeconfig.yaml
-          # export KUBECONFIG=capi_mgmt_kubeconfig.yaml
+          export KUBECONFIG=capi_mgmt_kubeconfig.yaml
           pwd
 
       - name: "Generate Cluster Yaml and Deploy"
