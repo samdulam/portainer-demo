@@ -7,10 +7,11 @@
     CONTROL_PLANE_MACHINE_COUNT: "{{ lookup('ansible.builtin.env', 'CONTROL_PLANE_MACHINE_COUNT') }}"
     WORKER_MACHINE_COUNT: "{{ lookup('ansible.builtin.env', 'WORKER_MACHINE_COUNT') }}"
     KUBERNETES_VERSION: "{{ lookup('ansible.builtin.env', 'KUBERNETES_VERSION') }}"
+    NAMESPACE: "{{ lookup('ansible.builtin.env', 'NAMESPACE') }}"
   tasks:
     - name: Generate Cluster Yaml from Template
       shell: |
-        clusterctl generate cluster {{ CLUSTER_NAME }}  --from files/k8s1.30.2-vsphere-kadm.yaml    --kubernetes-version {{ KUBERNETES_VERSION }}     --control-plane-machine-count {{ CONTROL_PLANE_MACHINE_COUNT }}     --worker-machine-count {{ WORKER_MACHINE_COUNT }} > {{ CLUSTER_NAME }}.yaml
+        clusterctl generate cluster {{ CLUSTER_NAME }}  --from files/k8s1.30.2-vsphere-kadm.yaml    --kubernetes-version {{ KUBERNETES_VERSION }}     --control-plane-machine-count {{ CONTROL_PLANE_MACHINE_COUNT }}     --worker-machine-count {{ WORKER_MACHINE_COUNT }} -n {{ NAMESPACE }}> {{ CLUSTER_NAME }}.yaml
     
     - name: Deploy Cluster
       kubernetes.core.k8s:

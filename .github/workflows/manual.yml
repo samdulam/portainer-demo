@@ -105,10 +105,24 @@ jobs:
 
       - name: "Generate Cluster Yaml and Deploy"
         run: |
+          export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
           export CTRL_MEM=$(($CTRL_MEM * 1024))
           export WKR_MEM=$(($WKR_MEM * 1024))
           ansible-playbook deploy/main.yaml
           kubectl get clusters -n $NAMESPACE
+
+      - name: "Generate KUBECONFIG for the workload cluster"
+        run: |
+          export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
+          clusterctl get kubeconfig $CLUSTER_NAME -n $NAMESPACE > deploy/$CLUSTER_NAME-kubeconfig
+          kubectl get clusters -n $NAMESPACE
+          kubectl get nodes --kubeconfig $KUBECONFIG
+
+      - name: "Deploy CNI"
+        run: |
+          export KUBECONFIG=deploy/$CLUSTER_NAME-kubeconfig
+          kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+          kubectl get pods -n kube-system
           
 
 
