@@ -97,20 +97,18 @@ jobs:
       - name: "Setup Variables"
         run: |
           export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
-          export CTRL_MEM=$(($CTRL_MEM * 1024))
-          export WKR_MEM=$(($WKR_MEM * 1024))
+          # export CTRL_MEM=$(($CTRL_MEM * 1024))
+          # export WKR_MEM=$(($WKR_MEM * 1024))
           echo $KUBE_CONFIG > capi_mgmt_kubeconfig.yaml
-          export KUBECONFIG=capi_mgmt_kubeconfig.yaml
+          # export KUBECONFIG=capi_mgmt_kubeconfig.yaml
           pwd
-          echo $CTRL_MEM
-          echo $WKR_MEM
 
       - name: "Generate Cluster Yaml and Deploy"
         run: |
-          echo $CTRL_MEM
-          echo $WKR_MEM
-          # ansible-playbook deploy/main.yaml
-          # kubectl get clusters -n $NAMESPACE
+          export CTRL_MEM=$(($CTRL_MEM * 1024))
+          export WKR_MEM=$(($WKR_MEM * 1024))
+          ansible-playbook deploy/main.yaml
+          kubectl get clusters -n $NAMESPACE
           
 
 
