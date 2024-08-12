@@ -60,18 +60,18 @@ env:
   # Vars from inputs
   CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
   DATACENTER: ${{ inputs.DATACENTER }}
-  NAMESPACE: $({{ inputs.DATACENTER }} | lower)
+  NAMESPACE: $DATACENTER.lower()
   CONTROL_PLANE_ENDPOINT_IP: ${{ inputs.CONTROL_PLANE_ENDPOINT_IP }}
   CONTROL_PLANE_MACHINE_COUNT: ${{ inputs.CONTROL_PLANE_MACHINE_COUNT }}
   WORKER_MACHINE_COUNT: ${{ inputs.WORKER_MACHINE_COUNT }}
   KUBERNETES_VERSION: ${{ inputs.KUBERNETES_VERSION }}
   CTRL_CPU: ${{ inputs.CTRL_CPU }}
-  CTRL_MEM: $({{ inputs.CTRL_MEM }} * 1024)
+  CTRL_MEM: ${{ inputs.CTRL_MEM }} * 1024
   WKR_CPU: ${{ inputs.WKR_CPU }}
-  WKR_MEM: $({{ inputs.WKR_MEM }} * 1024)
+  WKR_MEM: ${{ inputs.WKR_MEM }} * 1024
   # Vars from Actions Vars and Secrets
   VSPHERE_SERVER: ${{ secrets.VSPHERE_SERVER }}
-  VSPHERE_USER: ${{ secrets.VSPHERE_USER }}
+  VSPHERE_USERNAME: ${{ secrets.VSPHERE_USERNAME }}
   VSPHERE_PASSWORD: ${{ secrets.VSPHERE_PASSWORD }}
   VSPHERE_TLS_THUMBPRINT: ${{ secrets.VSPHERE_TLS_THUMBPRINT }}
   VSPHERE_SSH_AUTHORIZED_KEY: ${{ secrets.VSPHERE_SSH_AUTHORIZED_KEY }}
