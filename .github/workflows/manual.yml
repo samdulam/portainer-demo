@@ -28,5 +28,5 @@ jobs:
           env
           echo "Secret: "$SECRET1
           echo "Var: "$VAR1
-          echo "ClusterName: $CLUSTER_NAME"
+          echo "ClusterName: ${{ inputs.CLUSTER_NAME }}"
           
