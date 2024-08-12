@@ -90,6 +90,8 @@ jobs:
   prepare:
     runs-on: sdulam
     steps:
+      - name: 'Checkout the Current Branch'
+        uses: actions/checkout@v4.1.1
       - name: "Setup Variables"
         run: |
           export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
