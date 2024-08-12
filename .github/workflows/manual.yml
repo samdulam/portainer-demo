@@ -110,6 +110,7 @@ jobs:
           export WKR_MEM=$(($WKR_MEM * 1024))
           ansible-playbook deploy/main.yaml
           kubectl get clusters -n $NAMESPACE
+          sleep 120
 
       - name: "Generate KUBECONFIG for the workload cluster"
         run: |
