@@ -20,10 +20,9 @@ env:
   ClusterName: ${{ inputs.ClusterName }}
 jobs:
   test:
-    runs-on: sdulam
+    runs-on: ubuntu-latest
     steps:
       - name: "First Step"
-        shell: bash
         run: |
           pwd
           env
