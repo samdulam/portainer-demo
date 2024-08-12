@@ -25,7 +25,7 @@ jobs:
       - name: "First Step"
         run: |
           pwd
-          env
+          echo $GITHUB_ENV
           echo "MyAwesome: "$TESTME1
           echo "Var: "$VAR1
           echo "ClusterName: ${{ inputs.CLUSTER_NAME }}"
