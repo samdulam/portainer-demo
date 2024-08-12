@@ -6,18 +6,84 @@ on:
         description: 'Enter a Name for Cluster:'
         type: string
         required: true
-      Dataaacenter:
+      DATACENTER:
         description: 'DataCenter to deploy the cluster in:'
+        type: choice
+        default: "Houston"
+        required: true
+        options:
+          - Houston
+          - Kty
+      CONTROL_PLANE_ENDPOINT_IP:
+        description: 'IP Address to be used for VIP:'
         type: string
         required: true
-      Num of Control Plane Nodes:
+      CONTROL_PLANE_MACHINE_COUNT:
         description: "Control plane nodes needed:"
-        required: false
-        type: string
+        default: 3
+        required: true
+        type: number
+      WORKER_MACHINE_COUNT:
+        description: "Worker nodes needed:"
+        default: 3
+        required: true
+        type: number
+      KUBERNETES_VERSION:
+        description: "Kubernetes Version:"
+        default: "v1.30.2"
+        required: true
+        type: choice
+        options:
+          - "v1.30.2"
+          - "v1.30.1"
+      CTRL_CPU:
+        description: "Control Plane CPU:"
+        default: 2
+        required: true
+        type: number
+      CTRL_MEM:
+        description: "Control Plane Memory in GB:"
+        default: 4
+        required: true
+        type: number
+      WKR_CPU:
+        description: "Worker CPU:"
+        default: 4
+        required: true
+        type: number
+      WKR_MEM:
+        description: "Worker Memory in GB:"
+        default: 16
+        required: true
+        type: number
 env:
-  TESTME1: ${{ secrets.SECRET1 }}
-  VAR1: ${{ vars.VAR1 }}
+  # Vars from inputs
   CLUSTER_NAME: ${{ inputs.CLUSTER_NAME }}
+  DATACENTER: ${{ inputs.DATACENTER }}
+  CONTROL_PLANE_ENDPOINT_IP: ${{ inputs.CONTROL_PLANE_ENDPOINT_IP }}
+  CONTROL_PLANE_MACHINE_COUNT: ${{ inputs.CONTROL_PLANE_MACHINE_COUNT }}
+  WORKER_MACHINE_COUNT: ${{ inputs.WORKER_MACHINE_COUNT }}
+  KUBERNETES_VERSION: ${{ inputs.KUBERNETES_VERSION }}
+  CTRL_CPU: ${{ inputs.CTRL_CPU }}
+  CTRL_MEM: ${{ inputs.CTRL_MEM }}
+  WKR_CPU: ${{ inputs.WKR_CPU }}
+  WKR_MEM: ${{ inputs.WKR_MEM }}
+  # Vars from Actions Vars and Secrets
+  VSPHERE_SERVER: ${{ secrets.VSPHERE_SERVER }}
+  VSPHERE_USER: ${{ secrets.VSPHERE_USER }}
+  VSPHERE_PASSWORD: ${{ secrets.VSPHERE_PASSWORD }}
+  VSPHERE_TLS_THUMBPRINT: ${{ secrets.VSPHERE_TLS_THUMBPRINT }}
+  VSPHERE_SSH_AUTHORIZED_KEY: ${{ secrets.VSPHERE_SSH_AUTHORIZED_KEY }}
+  VSPHERE_DATACENTER: ${{ vars.VSPHERE_DATACENTER }}
+  VSPHERE_DATASTORE: ${{ vars.VSPHERE_DATASTORE }}
+  VSPHERE_NETWORK: ${{ vars.VSPHERE_NETWORK }}
+  VSPHERE_FOLDER: ${{ vars.VSPHERE_FOLDER }}
+  VSPHERE_RESOURCE_POOL: ${{ vars.VSPHERE_RESOURCE_POOL }}
+  VSPHERE_TEMPLATE: ${{ vars.VSPHERE_TEMPLATE }}
+  VSPHERE_STORAGE_POLICY: ""
+
+
+
 jobs:
   test:
     runs-on: sdulam
@@ -25,8 +91,5 @@ jobs:
       - name: "First Step"
         run: |
           pwd
-          echo $GITHUB_ENV
-          echo "MyAwesome: "$TESTME1
-          echo "Var: "$VAR1
-          echo "ClusterName: ${{ inputs.CLUSTER_NAME }}"
+          env >> env.txt
           
