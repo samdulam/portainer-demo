@@ -2,7 +2,7 @@ name: "Cluster Deploy"
 on:
   workflow_dispatch:
     inputs:
-      ClusterName:
+      Name:
         description: 'Enter a Name for Cluster:'
         type: string
         required: true
@@ -17,10 +17,10 @@ on:
 env:
   SECRET1: ${{ secrets.SECRET1 }}
   VAR1: ${{ vars.VAR1 }}
-  ClusterName: ${{ inputs.ClusterName }}
+  ClusterName: ${{ inputs.Name }}
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: sdulam
     steps:
       - name: "First Step"
         run: |
@@ -28,5 +28,5 @@ jobs:
           env
           echo "Secret: "$SECRET1
           echo "Var: "$VAR1
-          echo "ClusterName: ${{ inputs.ClusterName }}"
+          echo "ClusterName: ${{ inputs.Name }}"
           
