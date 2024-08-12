@@ -116,8 +116,8 @@ jobs:
         run: |
           export NAMESPACE=$(echo $DATACENTER | tr -s '[:upper:]' '[:lower:]')
           clusterctl get kubeconfig $CLUSTER_NAME -n $NAMESPACE > deploy/$CLUSTER_NAME-kubeconfig
-          kubectl get clusters -n $NAMESPACE
-          kubectl get nodes --kubeconfig $KUBECONFIG
+          kubectl get clusters -n $NAMESPACE --kubeconfig deploy/capi_mgmt_kubeconfig.yaml
+          kubectl get nodes --kubeconfig deploy/$CLUSTER_NAME-kubeconfig
 
       - name: "Deploy CNI"
         run: |
