@@ -1,0 +1,12 @@
+version: "3.9"
+
+include:
+  - path: ./${PORTAINER_EDGE_ID}.yml
+
+services:
+  webapp:
+    image: httpd:alpine
+    depends_on:
+      - api
+    ports:
+      - "8080:80"
