@@ -19,7 +19,7 @@ services:
     env_file:
       - ./stack.env
     volumes:
-      - ./install-plugin.sh:/post-init.d/install-plugins.sh
-      - ./install-plugin.sh:/docker-entrypoint-init.d/install-plugins.sh
+      - ./install-plugins.sh:/post-init.d/install-plugins.sh
+      - ./install-plugins.sh:/docker-entrypoint-init.d/install-plugins.sh
 volumes:
   mariadb-pvs:
