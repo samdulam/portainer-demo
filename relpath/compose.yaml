@@ -4,8 +4,8 @@ services:
   mariadb:
     image: bitnami/mariadb:latest
     restart: on-failure
-    entrypoint :  
-      - /bin/sh
+    entrypoint:  
+      - /bin/bash
     command: "cat install-plugins.txt"
     env_file:
       - ./stack.env
