@@ -3,7 +3,10 @@ version: "3.9"
 services:
   mariadb:
     image: bitnami/mariadb:latest
-    restart: always
+    restart: on-failure
+    entrypoint :  
+      - /bin/sh
+      - cat /install-plugins.txt
     env_file:
       - ./stack.env
     volumes:
