@@ -6,7 +6,7 @@ services:
     restart: on-failure
     entrypoint :  
       - /bin/sh
-      - "cat install-plugins.txt"
+    command: "cat install-plugins.txt"
     env_file:
       - ./stack.env
     volumes:
