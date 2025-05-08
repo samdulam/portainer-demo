@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  dashboard-api-service:
+    image: nginx:latest
+    restart: always
+    networks:
+      - traefik-network
+      - trailpulse-network
+
+  dashboard:
+    image: nginx:latest
+    restart: always
+    #ports: # Commented out because we are using Traefik
+    #  - "3003:3003"
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.dashboard.rule: "Host(`${DASHBOARD_HOST}`)"
+      traefik.http.routers.dashboard.entrypoints: "websecure"
+      traefik.http.routers.dashboard.tls.certresolver: "myresolver"
+      traefik.http.services.dashboard.loadbalancer.server.port: "3003"
+    networks:
+      - traefik-network
+      - trailpulse-network
+
+  grafana:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana.rule=Host(`${GRAFANA_HOST}`)"
+      - "traefik.http.routers.grafana.entrypoints=websecure"
+      - "traefik.http.routers.grafana.tls.certresolver=myresolver"
+      - "traefik.http.services.grafana.loadbalancer.server.port=13000"
+    networks:
+      - traefik-network
+      - trailpulse-network
+
+networks:
+  trailpulse-network:
+  traefik-network:
+    external: true
